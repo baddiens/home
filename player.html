@@ -298,6 +298,113 @@
             color: var(--text-main);
         }
 
+
+        /* LIVE COMMENTS WIDGET */
+        .live-comments-widget {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            margin-top: 24px;
+        }
+
+        .live-comments-widget .comment-header {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 15px 18px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .live-comments-widget .live-indicator {
+            font-size: 11px;
+            background: #ef4444;
+            padding: 4px 8px;
+            border-radius: 5px;
+            animation: liveCommentBlink 1.5s infinite;
+        }
+
+        @keyframes liveCommentBlink {
+            50% { opacity: 0.5; }
+        }
+
+        .live-comments-widget .comment-list {
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .live-comments-widget .comment-item {
+            display: flex;
+            gap: 10px;
+            animation: liveCommentFadeIn 0.5s ease forwards;
+        }
+
+        @keyframes liveCommentFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .live-comments-widget .avatar {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ccc;
+        }
+
+        .live-comments-widget .comment-content {
+            background: rgba(148, 163, 184, 0.12);
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+
+        .live-comments-widget .username {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 3px;
+            color: var(--text-title);
+        }
+
+        .live-comments-widget .message {
+            font-size: 14px;
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .live-comments-widget .time {
+            font-size: 11px;
+            color: var(--text-main);
+            opacity: 0.7;
+            margin-top: 5px;
+            display: block;
+        }
+
+        @media (max-width: 767.98px) {
+            .live-comments-widget {
+                border-radius: 14px;
+                margin-top: 18px;
+            }
+
+            .live-comments-widget .comment-content {
+                max-width: calc(100% - 50px);
+            }
+
+            .live-comments-widget .message {
+                font-size: 13px;
+            }
+        }
+
         /* RECOMMENDATIONS PANEL (ASIDE LIST) */
         .aside-heading-wrapper { 
             background-color: var(--card-bg);
@@ -475,6 +582,18 @@
                     <div class="video-description-box" id="mainVideoDesc">
                         Loading video description ...
                     </div>
+
+                    <!-- LIVE COMMENTS WIDGET -->
+                    <div class="live-comments-widget">
+                        <div class="comment-header">
+                            <span>Live Comments</span>
+                            <span class="live-indicator">LIVE</span>
+                        </div>
+
+                        <div class="comment-list" id="liveCommentContainer">
+                            <!-- Komentar simulasi akan muncul di sini -->
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -639,6 +758,69 @@
                 `;
             });
         }
+
+
+        // LIVE COMMENTS SIMULATION
+        (function () {
+            const fakeDatabase = [
+                { name: "Andi Saputra", text: "Wah, beneran terbukti nih! Awalnya sempat ragu." },
+                { name: "Siti Rahma", text: "Prosesnya cepat banget, adminnya juga ramah." },
+                { name: "Budi Santoso", text: "Rekomendasi banget buat yang mau coba." },
+                { name: "Dewi Lestari", text: "Baru gabung hari ini dan langsung dapet hasilnya!" },
+                { name: "Rian Hidayat", text: "Gak nyesel join di sini, mantap pol." },
+                { name: "Eka Wijaya", text: "Mau tanya dong, ada grup bimbingannya gak ya?" },
+                { name: "Sari Utami", text: "Makasih infonya min, sangat membantu." }
+            ];
+
+            const container = document.getElementById("liveCommentContainer");
+            if (!container) return;
+
+            function createComment() {
+                const commentData = fakeDatabase[
+                    Math.floor(Math.random() * fakeDatabase.length)
+                ];
+
+                const item = document.createElement("div");
+                item.className = "comment-item";
+
+                const randomId = Math.floor(Math.random() * 1000);
+                const avatarUrl = "https://picsum.photos/seed/" + randomId + "/80/80";
+
+                item.innerHTML = `
+                    <img class="avatar" src="${avatarUrl}" alt="Avatar" loading="lazy">
+                    <div class="comment-content">
+                        <div class="username">${commentData.name}</div>
+                        <p class="message">${commentData.text}</p>
+                        <span class="time">Just now</span>
+                    </div>
+                `;
+
+                container.appendChild(item);
+                container.scrollTop = container.scrollHeight;
+
+                if (container.children.length > 15) {
+                    container.removeChild(container.firstChild);
+                }
+            }
+
+            createComment();
+
+            setTimeout(function () {
+                createComment();
+            }, 1500);
+
+            function startLiveComments() {
+                const randomTime =
+                    Math.floor(Math.random() * (8000 - 4000 + 1)) + 4000;
+
+                setTimeout(function () {
+                    createComment();
+                    startLiveComments();
+                }, randomTime);
+            }
+
+            startLiveComments();
+        })();
 
         function setupMobileVideoControls() {
             const video = document.getElementById('mainVideoFrame');
