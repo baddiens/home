@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-
-<html data-bs-theme="dark" id="htmlTag" lang="en-US">
+<html lang="en-US" data-bs-theme="dark" id="htmlTag">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Baddiex Videos</title>
-<!-- Favicon -->
-<link href="https://cdn.aceimg.com/KeMhTe9lo.png" rel="icon" type="image/png"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
-<style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Baddiex Videos</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://cdn.aceimg.com/KeMhTe9lo.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
         /* SINKRONISASI VARIABEL TEMA KONSISTEN DENGAN INDEX */
         [data-bs-theme="dark"] {
             --body-bg: #060913;
@@ -396,99 +401,131 @@
         }
     </style>
 </head>
-<body><div id="fb-root"></div><script async="" crossorigin="anonymous" defer="" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v24.0"></script>
-<nav class="navbar navbar-expand-lg fixed-top">
-<div class="container">
-<a class="navbar-brand" href="index.html">Baddiex.<span>net</span></a>
-<div class="d-flex align-items-center gap-2 order-lg-last">
-<button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
-<i class="fa-solid fa-moon" id="themeIcon"></i>
-</button>
-<div class="header-avatar d-none d-sm-flex">BH</div>
-<button class="navbar-toggler" data-bs-target="#desaFlixNavbar" data-bs-toggle="collapse" type="button">
-<span class="navbar-toggler-icon"></span>
-</button>
-</div>
+<body>
 
-</div>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Baddiex.<span>net</span></a>
+            
+            <div class="d-flex align-items-center gap-2 order-lg-last">
+                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+                <div class="header-avatar d-none d-sm-flex"><i class="fa fa-user" aria-hidden="true"></i></div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#desaFlixNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
+                </ul>
+                
+                </div>
+            </div>
+        </div>
+    </nav>
 
-</nav>
-<div class="container my-4">
-<div class="row g-4 player-workspace">
-<div class="col-lg-8">
-<div class="video-embed-box">
-<div class="custom-video-player" id="customVideoPlayer">
-<video disablepictureinpicture="" id="mainVideoFrame" playsinline="" preload="metadata" webkit-playsinline="">
+    <div class="container my-4">
+        <div class="row g-4 player-workspace">
+            
+            <div class="col-lg-8">
+                <div class="video-embed-box">
+                    <div class="custom-video-player" id="customVideoPlayer">
+                    <video id="mainVideoFrame"
+                        playsinline
+                        webkit-playsinline
+                        preload="metadata"
+                        disablepictureinpicture>
                         Your browser does not support HTML5 video.
                     </video>
-<div class="mobile-video-controls">
-<button aria-label="Play/Pause" class="video-control-btn" id="playPauseBtn" type="button">
-<i class="fa-solid fa-play"></i>
-</button>
-<div class="video-progress-wrap">
-<input aria-label="Video progress" id="videoProgress" max="100" min="0" type="range" value="0"/>
-</div>
-<button aria-label="Volume" class="video-control-btn" id="muteBtn" type="button">
-<i class="fa-solid fa-volume-high"></i>
-</button>
-<button aria-label="Fullscreen" class="video-control-btn" id="fullscreenBtn" type="button">
-<i class="fa-solid fa-expand"></i>
-</button>
-</div>
-</div>
-</div>
-<a class="full-hd-button" href="https://baddiex.net/" id="fullHdButton">
-                    See More Videos
-                </a>
-<div class="player-meta-card">
-<h1 class="video-main-title" id="mainVideoTitle">Loading video title ...</h1>
-<div class="video-info-row d-flex justify-content-between align-items-center w-100">
-<span class="author-badge" id="mainVideoAuthor">
-<i class="fa-solid fa-circle-user me-2 text-success fs-5"></i>--
+
+                    <div class="mobile-video-controls">
+                        <button class="video-control-btn" id="playPauseBtn" type="button" aria-label="Play/Pause">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+
+                        <div class="video-progress-wrap">
+                            <input id="videoProgress" type="range" min="0" max="100" value="0" aria-label="Video progress">
+                        </div>
+
+                        <button class="video-control-btn" id="muteBtn" type="button" aria-label="Volume">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+
+                        <button class="video-control-btn" id="fullscreenBtn" type="button" aria-label="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+                </div>
+
+                <a href="#" class="full-hd-button" id="fullHdButton" data-url="aHR0cHM6Ly90LmNvL0ZlMjlHVjlld0s=">
+    Full Length Videos
+</a>
+
+<script>
+document.getElementById("fullHdButton").addEventListener("click", function (e) {
+    e.preventDefault();
+    window.location.href = atob(this.dataset.url);
+});
+</script>
+
+                <div class="player-meta-card">
+                    <h1 class="video-main-title" id="mainVideoTitle">Loading video title ...</h1>
+                    
+                    <div class="video-info-row d-flex justify-content-between align-items-center w-100">
+                        <span class="author-badge" id="mainVideoAuthor">
+                            <i class="fa-solid fa-circle-user me-2 text-success fs-5"></i>--
                         </span>
-<span id="mainVideoViews">
-<i class="fa-regular fa-eye me-1 text-success"></i>-- 
+                        <span id="mainVideoViews">
+                            <i class="fa-regular fa-eye me-1 text-success"></i>-- 
                         </span>
-</div>
-<div class="video-description-box" id="mainVideoDesc">
+                    </div>
+
+                    <div class="video-description-box" id="mainVideoDesc">
                         Loading video description ...
                     </div>
-<div class="player-meta-card"><h3>Facebook Comments</h3><div class="fb-comments" data-numposts="10" data-width="100%" id="fb-comments"></div></div></div>
-</div>
-<div class="col-lg-4">
-<div class="aside-heading-wrapper">
-<h3 class="aside-heading">Trending</h3>
-</div>
-<div class="recommendation-list" id="asideRecommendationWrapper"></div>
-</div>
-</div>
-</div>
-<footer class="premium-web-footer">
-<div class="container">
-<div class="row gy-4">
-<div class="col-lg-5 col-md-6">
-<div class="footer-social-box">
-</div>
-</div>
-<div class="col-lg-3 col-md-6">
-<ul class="footer-links">
-</ul>
-</div>
-<div class="col-lg-4 col-md-12">
-<ul class="footer-links">
-</ul>
-</div>
-</div>
-<div class="row">
-<div class="col-12 text-center">
-<div class="footer-bottom-bar">© 2026 <strong>Baddiex</strong>. All Rights Reserved.</div>
-</div>
-</div>
-</div>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="aside-heading-wrapper">
+                    <h3 class="aside-heading">Trending</h3>
+                </div>
+                <div class="recommendation-list" id="asideRecommendationWrapper"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="premium-web-footer">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-6">
+                    <div class="footer-social-box">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <ul class="footer-links">
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <ul class="footer-links">
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="footer-bottom-bar">&copy; 2026 <strong>Baddiex</strong>. All Rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
         let fullDatabase = [];
 
         // 1. Load the saved theme preference from LocalStorage
@@ -598,7 +635,7 @@
                 asideWrapper.innerHTML += `
                     <a href="player.html?id=${video.id}" class="rec-item-card">
                         <div class="rec-thumb">
-                            <img src="${video.thumbnail}" alt="Thumbnail">
+                            <img loading="lazy" decoding="async" src="${video.thumbnail}" alt="Thumbnail">
                         </div>
                         <div class="rec-body">
                             <h4 class="rec-title">${video.title}</h4>
@@ -678,9 +715,9 @@
             updatePlayIcon();
         }
 
-        window.onload = function() { initPlayerSystem(); setupMobileVideoControls(); };
+        document.addEventListener('DOMContentLoaded',()=>{initPlayerSystem();setupMobileVideoControls();});
     </script>
-<script>
+    <script>
 document.addEventListener('contextmenu', function(e) {
     e.preventDefault();
 });
@@ -739,7 +776,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 </script>
-<script>document.addEventListener('DOMContentLoaded',function(){var c=document.getElementById('fb-comments');if(c){c.setAttribute('data-href',window.location.href);if(window.FB){FB.XFBML.parse();}}});</script></body>
+</body>
 <!-- Histats.com  START  (aync)-->
 <script type="text/javascript">var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,4999790,4,0,0,0,00010000']);
@@ -750,6 +787,6 @@ var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async
 hs.src = ('//s10.histats.com/js15_as.js');
 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
 })();</script>
-<noscript><a href="/" target="_blank"><img alt="web tracker" border="0" src="//sstatic1.histats.com/0.gif?4999790&amp;101"/></a></noscript>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4999790&101" alt="web tracker" border="0"></a></noscript>
 <!-- Histats.com  END  -->
 </html>
