@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1978bd">
+  <title>Baddiex MP4 Downloader</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #1979bd;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(600px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .topbar {
+      border-bottom: 1px solid rgba(255,255,255,.75);
+      height: 37px;
+    }
+    .nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav a:hover { opacity: .8; }
+    .arrow { font-size: 11px; margin-left: 2px; }
+
+    /* Logo */
+    .brand {
+      text-align: center;
+      padding: 28px 0 57px;
+    }
+    .wave {
+      width: 220px;
+      height: 70px;
+      margin: 0 auto 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .wave::before {
+      content: "";
+      width: 220px;
+      height: 54px;
+      background:
+        linear-gradient(90deg, transparent 0 8%, #fff 8% 9%, transparent 9% 12%,
+        #fff 12% 13%, transparent 13% 16%, #fff 16% 17%, transparent 17% 20%,
+        #fff 20% 22%, transparent 22% 24%, #fff 24% 27%, transparent 27% 29%,
+        #fff 29% 32%, transparent 32% 34%, #fff 34% 38%, transparent 38% 40%,
+        #fff 40% 43%, transparent 43% 45%, #fff 45% 48%, transparent 48% 50%,
+        #fff 50% 53%, transparent 53% 55%, #fff 55% 58%, transparent 58% 60%,
+        #fff 60% 63%, transparent 63% 66%, #fff 66% 68%, transparent 68% 71%,
+        #fff 71% 73%, transparent 73% 76%, #fff 76% 78%, transparent 78% 81%,
+        #fff 81% 83%, transparent 83% 87%, #fff 87% 89%, transparent 89%);
+      clip-path: polygon(
+        0 48%, 5% 48%, 7% 35%, 9% 65%, 11% 45%, 13% 57%, 15% 25%,
+        17% 75%, 19% 38%, 21% 62%, 23% 18%, 25% 82%, 27% 35%, 29% 67%,
+        31% 20%, 33% 90%, 35% 12%, 37% 78%, 39% 30%, 41% 65%, 43% 10%,
+        45% 82%, 47% 28%, 49% 70%, 51% 20%, 53% 76%, 55% 35%, 57% 67%,
+        59% 15%, 61% 85%, 63% 35%, 65% 65%, 67% 22%, 69% 78%, 71% 30%,
+        73% 62%, 75% 25%, 77% 70%, 79% 38%, 81% 60%, 83% 35%, 85% 55%,
+        88% 48%, 100% 48%, 100% 52%, 88% 52%, 85% 60%, 83% 45%, 81% 65%,
+        79% 42%, 77% 76%, 75% 28%, 73% 68%, 71% 35%, 69% 85%, 67% 25%,
+        65% 72%, 63% 30%, 61% 90%, 59% 20%, 57% 72%, 55% 28%, 53% 82%,
+        51% 25%, 49% 75%, 47% 20%, 45% 90%, 43% 15%, 41% 72%, 39% 35%,
+        37% 85%, 35% 18%, 33% 92%, 31% 28%, 29% 70%, 27% 30%, 25% 88%,
+        23% 12%, 21% 68%, 19% 30%, 17% 82%, 15% 18%, 13% 63%, 11% 35%,
+        9% 70%, 7% 30%, 5% 52%, 0 52%
+      );
+    }
+    .brand-title {
+      font-family: Impact, "Arial Narrow", sans-serif;
+      font-size: 34px;
+      letter-spacing: -1px;
+    }
+
+    /* Search */
+    .search-box {
+      background: #0866ab;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 58px;
+    }
+    .search-row {
+      display: flex;
+      height: 42px;
+    }
+    .search-row input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 0 12px;
+      font-size: 14px;
+      color: #555;
+      background: #fff;
+    }
+    .search-row button {
+      width: 54px;
+      border: 0;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+    }
+    .search-icon {
+      width: 17px;
+      height: 17px;
+      border: 3px solid #111;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+    }
+    .search-icon::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 3px;
+      background: #111;
+      transform: rotate(45deg);
+      right: -7px;
+      bottom: -4px;
+      border-radius: 2px;
+    }
+    .consent {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 13px;
+    }
+
+    /* Content */
+    main {
+      padding-bottom: 30px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 27px;
+      line-height: 1.12;
+      font-weight: 400;
+      margin: 0 20px 10px;
+    }
+    .content p {
+      font-size: 13px;
+      line-height: 1.8;
+      font-weight: 600;
+      margin: 0 0 14px;
+      text-align: left;
+    }
+    .content a {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* Smartphone */
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 24px);
+      }
+
+      .topbar {
+        height: auto;
+        min-height: 44px;
+      }
+
+      .nav {
+        gap: 16px;
+        flex-wrap: wrap;
+        padding: 9px 0;
+        font-size: 12px;
+      }
+
+      .brand {
+        padding: 24px 0 40px;
+      }
+
+      .wave {
+        width: 180px;
+        height: 62px;
+      }
+
+      .wave::before {
+        width: 180px;
+      }
+
+      .brand-title {
+        font-size: 29px;
+      }
+
+      .search-box {
+        padding: 14px;
+        margin-bottom: 42px;
+        border-radius: 9px;
+      }
+
+      .search-row {
+        height: 43px;
+      }
+
+      .search-row button {
+        width: 48px;
+      }
+
+      .consent {
+        font-size: 11px;
+        line-height: 1.4;
+      }
+
+      h1 {
+        font-size: 23px;
+        margin-left: 8px;
+        margin-right: 8px;
+      }
+
+      .content p {
+        font-size: 13px;
+        line-height: 1.75;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav {
+        gap: 11px;
+        font-size: 11px;
+      }
+
+      .brand-title {
+        font-size: 26px;
+      }
+
+      h1 {
+        font-size: 21px;
+      }
+
+      .search-box {
+        padding: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="brand">
+      <div class="wave" aria-hidden="true"></div>
+      <div class="brand-title">MP3JUICE.BLOG</div>
+    </section>
+
+    <section class="search-box">
+      <form class="search-row" onsubmit="return doSearch(event)">
+        <input id="searchInput" type="text"
+               placeholder="Input keywords or paste YouTube URL here ..."
+               autocomplete="off">
+        <button type="submit" aria-label="Search">
+          <span class="search-icon"></span>
+        </button>
+      </form>
+      <div class="consent">
+        By pressing Search™ you confirm your consent to our Terms of Use.
+      </div>
+    </section>
+
+    <main class="content">
+      <h1>MP3Juices - MP3 Juice Download Lagu Mp3<br>Terbaik 2026</h1>
+
+      <p>
+        <a href="#">Mp3Juices</a> adalah situs gratis yang populer untuk mengunduh musik mp3.
+        Mp3Juices juga menawarkan mesin pencari yang memungkinkan Anda mencari file audio MP3 di
+        seluruh Internet. Anda dapat mengunduh lagu favorit Anda sebagai musik mp3, atau video,
+        dengan memasukkan permintaan pencarian Anda di bidang pencarian Jus Mp3.
+        Internet kemudian akan mencari file audio MP3.
+      </p>
+
+      <p>
+        Anda juga dapat menyalin url dan menempelkannya ke kotak pencarian dan mengklik tombol
+        pencarian, konversi dimulai dan dalam beberapa detik, file audio yang dapat diunduh siap
+        untuk diunduh.
+      </p>
+
+      <p>
+        Pengunduh Mp3Juice ini menawarkan unduhan mp3 Musik mp3 Berkualitas Tinggi secara gratis.
+        Hal-hal terbaik dari Pengunduh Mp3 ini Anda tidak perlu menginstal aplikasi dan perangkat
+        lunak apa pun di perangkat Anda.
+      </p>
+
+      <p>
+        MP3 Juice adalah mesin pencari untuk musik dan unduhan mp3 gratis. Temukan lagu yang Anda
+        inginkan dengan MP3Juices dan simpan hingga 320 kbps ke perangkat lokal Anda.
+        Cari musik di seluruh web, termasuk platform paling populer untuk streaming musik dan
+        unduhan mp3.
+      </p>
+
+      <p>
+        Mp3Juice Menyediakan Semua Format File Seperti Mp3, Mp4 Dan M4a.
+        Anda Mendapatkan Mp3 64kbps, 128kbps, 256kbps, Mp4 320, 460p, 720p Dan Mkv.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    function doSearch(event) {
+      event.preventDefault();
+      const value = document.getElementById("searchInput").value.trim();
+
+      if (!value) {
+        document.getElementById("searchInput").focus();
+        return false;
+      }
+
+      // Ganti bagian ini dengan URL/search endpoint milik Anda.
+      console.log("Search:", value);
+      alert("Pencarian: " + value);
+      return false;
+    }
+  </script>
+
+</body>
+</html>
