@@ -1,368 +1,422 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta name='admaven-placement' content=BqHY8rTU5>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1978bd">
-  <title>Baddiex Downloader</title>
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #000000;
-      color: #fff;
-      min-height: 100vh;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Business Insurance Guide</title>
+
+<meta name="description" content="A simple guide to business insurance, coverage types, costs and ways to manage premiums.">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f7f8fa;
+    color:#222;
+    line-height:1.7;
+}
+
+.header{
+    background:#fff;
+    border-bottom:1px solid #eee;
+    padding:18px 20px;
+}
+
+.nav{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+    color:#111;
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+}
+
+.nav-links a{
+    color:#555;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.container{
+    max-width:850px;
+    margin:35px auto;
+    padding:0 20px;
+}
+
+.notice{
+    background:#111;
+    color:#fff;
+    padding:15px 18px;
+    border-radius:10px;
+    margin-bottom:25px;
+    text-align:center;
+    font-size:14px;
+}
+
+.article{
+    background:#fff;
+    border-radius:14px;
+    padding:38px;
+    box-shadow:0 4px 20px rgba(0,0,0,.05);
+}
+
+.article h1{
+    font-size:38px;
+    line-height:1.2;
+    margin-bottom:20px;
+    color:#111;
+}
+
+.article h2{
+    font-size:27px;
+    margin:35px 0 14px;
+    color:#111;
+}
+
+.article h3{
+    font-size:20px;
+    margin-bottom:8px;
+    color:#111;
+}
+
+.article p{
+    margin-bottom:18px;
+    color:#444;
+}
+
+.article ul,
+.article ol{
+    padding-left:25px;
+    margin-bottom:20px;
+}
+
+.article li{
+    margin-bottom:10px;
+    color:#444;
+}
+
+.policy{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin:25px 0;
+}
+
+.card{
+    border:1px solid #e5e5e5;
+    border-radius:12px;
+    padding:20px;
+    background:#fafafa;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.price{
+    font-weight:bold;
+    margin-top:12px;
+    color:#111;
+}
+
+.cta{
+    margin-top:35px;
+    padding:28px;
+    background:#111;
+    color:#fff;
+    border-radius:14px;
+    text-align:center;
+}
+
+.cta h2{
+    color:#fff;
+    margin-top:0;
+}
+
+.cta p{
+    color:#ddd;
+}
+
+.button{
+    display:inline-block;
+    margin-top:12px;
+    padding:12px 22px;
+    border-radius:8px;
+    background:#fff;
+    color:#111;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.faq{
+    border-top:1px solid #eee;
+    padding-top:20px;
+    margin-top:20px;
+}
+
+.faq h3{
+    margin-top:20px;
+}
+
+.footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#777;
+    font-size:13px;
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
     }
 
-    .container {
-      width: min(600px, calc(100% - 28px));
-      margin: 0 auto;
+    .container{
+        margin:20px auto;
+        padding:0 12px;
     }
 
-    /* Header */
-    .topbar {
-      border-bottom: 1px solid rgba(255,255,255,.75);
-      height: 37px;
-    }
-    .nav {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .nav a:hover { opacity: .8; }
-    .arrow { font-size: 11px; margin-left: 2px; }
-
-    /* Logo */
-    .brand {
-      text-align: center;
-      padding: 28px 0 57px;
-    }
-    .wave {
-      width: 220px;
-      height: 70px;
-      margin: 0 auto 8px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .wave::before {
-      content: "";
-      width: 220px;
-      height: 54px;
-      background:
-        linear-gradient(90deg, transparent 0 8%, #fff 8% 9%, transparent 9% 12%,
-        #fff 12% 13%, transparent 13% 16%, #fff 16% 17%, transparent 17% 20%,
-        #fff 20% 22%, transparent 22% 24%, #fff 24% 27%, transparent 27% 29%,
-        #fff 29% 32%, transparent 32% 34%, #fff 34% 38%, transparent 38% 40%,
-        #fff 40% 43%, transparent 43% 45%, #fff 45% 48%, transparent 48% 50%,
-        #fff 50% 53%, transparent 53% 55%, #fff 55% 58%, transparent 58% 60%,
-        #fff 60% 63%, transparent 63% 66%, #fff 66% 68%, transparent 68% 71%,
-        #fff 71% 73%, transparent 73% 76%, #fff 76% 78%, transparent 78% 81%,
-        #fff 81% 83%, transparent 83% 87%, #fff 87% 89%, transparent 89%);
-      clip-path: polygon(
-        0 48%, 5% 48%, 7% 35%, 9% 65%, 11% 45%, 13% 57%, 15% 25%,
-        17% 75%, 19% 38%, 21% 62%, 23% 18%, 25% 82%, 27% 35%, 29% 67%,
-        31% 20%, 33% 90%, 35% 12%, 37% 78%, 39% 30%, 41% 65%, 43% 10%,
-        45% 82%, 47% 28%, 49% 70%, 51% 20%, 53% 76%, 55% 35%, 57% 67%,
-        59% 15%, 61% 85%, 63% 35%, 65% 65%, 67% 22%, 69% 78%, 71% 30%,
-        73% 62%, 75% 25%, 77% 70%, 79% 38%, 81% 60%, 83% 35%, 85% 55%,
-        88% 48%, 100% 48%, 100% 52%, 88% 52%, 85% 60%, 83% 45%, 81% 65%,
-        79% 42%, 77% 76%, 75% 28%, 73% 68%, 71% 35%, 69% 85%, 67% 25%,
-        65% 72%, 63% 30%, 61% 90%, 59% 20%, 57% 72%, 55% 28%, 53% 82%,
-        51% 25%, 49% 75%, 47% 20%, 45% 90%, 43% 15%, 41% 72%, 39% 35%,
-        37% 85%, 35% 18%, 33% 92%, 31% 28%, 29% 70%, 27% 30%, 25% 88%,
-        23% 12%, 21% 68%, 19% 30%, 17% 82%, 15% 18%, 13% 63%, 11% 35%,
-        9% 70%, 7% 30%, 5% 52%, 0 52%
-      );
-    }
-    .brand-title {
-      font-family: Impact, "Arial Narrow", sans-serif;
-      font-size: 34px;
-      letter-spacing: -1px;
+    .article{
+        padding:23px 18px;
+        border-radius:10px;
     }
 
-    /* Search */
-    .search-box {
-      background: #000000;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 58px;
-    }
-    .search-row {
-      display: flex;
-      height: 42px;
-    }
-    .search-row input {
-      flex: 1;
-      min-width: 0;
-      border: 0;
-      outline: 0;
-      padding: 0 12px;
-      font-size: 14px;
-      color: #555;
-      background: #fff;
-    }
-    .search-row button {
-      width: 54px;
-      border: 0;
-      background: #fff;
-      cursor: pointer;
-      position: relative;
-    }
-    .search-icon {
-      width: 17px;
-      height: 17px;
-      border: 3px solid #111;
-      border-radius: 50%;
-      display: inline-block;
-      position: relative;
-    }
-    .search-icon::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 3px;
-      background: #111;
-      transform: rotate(45deg);
-      right: -7px;
-      bottom: -4px;
-      border-radius: 2px;
-    }
-    .consent {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 13px;
+    .article h1{
+        font-size:29px;
     }
 
-    /* Content */
-    main {
-      padding-bottom: 30px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 27px;
-      line-height: 1.12;
-      font-weight: 400;
-      margin: 0 20px 10px;
-    }
-    .content p {
-      font-size: 13px;
-      line-height: 1.8;
-      font-weight: 600;
-      margin: 0 0 14px;
-      text-align: left;
-    }
-    .content a {
-      color: #fff;
-      font-weight: 700;
+    .article h2{
+        font-size:23px;
     }
 
-    /* Smartphone */
-    @media (max-width: 600px) {
-      .container {
-        width: calc(100% - 24px);
-      }
-
-      .topbar {
-        height: auto;
-        min-height: 44px;
-      }
-
-      .nav {
-        gap: 16px;
-        flex-wrap: wrap;
-        padding: 9px 0;
-        font-size: 12px;
-      }
-
-      .brand {
-        padding: 24px 0 40px;
-      }
-
-      .wave {
-        width: 180px;
-        height: 62px;
-      }
-
-      .wave::before {
-        width: 180px;
-      }
-
-      .brand-title {
-        font-size: 29px;
-      }
-
-      .search-box {
-        padding: 14px;
-        margin-bottom: 42px;
-        border-radius: 9px;
-      }
-
-      .search-row {
-        height: 43px;
-      }
-
-      .search-row button {
-        width: 48px;
-      }
-
-      .consent {
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      h1 {
-        font-size: 23px;
-        margin-left: 8px;
-        margin-right: 8px;
-      }
-
-      .content p {
-        font-size: 13px;
-        line-height: 1.75;
-      }
+    .policy{
+        grid-template-columns:1fr;
     }
 
-    @media (max-width: 380px) {
-      .nav {
-        gap: 11px;
-        font-size: 11px;
-      }
-
-      .brand-title {
-        font-size: 26px;
-      }
-
-      h1 {
-        font-size: 21px;
-      }
-
-      .search-box {
-        padding: 11px;
-      }
+    .notice{
+        font-size:13px;
     }
-  </style>
+}
+</style>
 </head>
-  <script>(function(s){s.dataset.zone='11640425',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
 <body>
 
+<header class="header">
+    <nav class="nav">
+        <div class="logo">Business Guide</div>
 
-  <div class="container">
-    <section class="brand">
-      <div class="wave" aria-hidden="true"></div>
-      <div class="brand-title">BADDIEX</div>
-    </section>
+        <div class="nav-links">
+            <a href="#coverage">Coverage</a>
+            <a href="#policies">Policies</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </nav>
+</header>
 
-    <p>
-       <center>Baddiex is a popular free site for downloading MP4 videos. 
-Baddiex also offers a search engine that allows you to search for MP4 video files
-across the Internet.</center>
-      </p>
-    <p>
-       <center>Viral Clip People Are Watching TODAY!</center>
-      </p>
 
-      <p>
-        <center>If the video does not load, you can try the alternative link below.</center>
-      </p>
-    <br>
-<a href="https://omg10.com/4/11640423"
-style="display:flex;align-items:center;justify-content:center;width:calc(100% - 24px);max-width:420px;min-height:54px;margin:16px auto;padding:8px 12px;box-sizing:border-box;background:linear-gradient(#ff1b1b,#d90000);border-radius:14px;text-decoration:none;box-shadow:0 5px 12px rgba(0,0,0,.28);">  
+<main class="container">
 
-<span style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:3px solid #fff;border-radius:50%;margin-right:11px;flex-shrink:0;box-sizing:border-box;">
-<span style="width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid #fff;margin-left:3px;"></span>
-</span>
+    <div class="notice">
+        💡 Business Insurance Guide
+    </div>
 
-<span style="color:#fff;font-family:Arial,sans-serif;font-weight:900;font-size:clamp(22px,7vw,32px);letter-spacing:1px;line-height:1;text-shadow:0 2px 4px rgba(0,0,0,.3);white-space:nowrap;">
-PLAY VIDEO
-</span>
+    <article class="article">
 
-</a>
-    <section class="search-box">
-      <form class="search-row" onsubmit="return doSearch(event)">
-        <input id="searchInput" type="text"
-               placeholder="Input keywords or paste YouTube URL here ..."
-               autocomplete="off">
-        <button type="submit" aria-label="Search">
-          <span class="search-icon"></span>
-        </button>
-      </form>
-      <div class="consent">
-      </div>
-    </section>
+        <h1>Bulletproof Your Brand: A Simple Guide to Business Insurance</h1>
 
-    <main class="content">
-      
-      <p>
-        <center>You can download your favorite videos as MP4 files
-by entering your search query into the MP4 Juice search field. 
-The system will then search for MP4 video files.</center>
-      </p>
+        <p>
+            Running a business involves more than growing sales and serving
+            customers. Unexpected accidents, legal claims and other risks can
+            create significant financial problems. Business insurance can help
+            protect a company against some of these risks.
+        </p>
 
-      <p>
-        <center>You can also copy the URL, paste it into the search box, and click the search button; the conversion begins, and within a few seconds, the downloadable video file is ready.</center>
-      </p>
+        <p>
+            The right policy depends on the type of business, its employees,
+            property, customers and the risks associated with its activities.
+        </p>
 
-      <p>
-        <center>This Baddiex downloader offers high-quality MP4 downloads for free.
-The best thing about this MP4 downloader is that you do not need to install any apps or software on your device.</center>
-      </p>
 
-      <p>
-        <center>Baddiex is a search engine for videos and free MP4 downloads. Find the videos you
-want with Baddiex and save them to your local device at up to 320 kbps. 
-Search for videos across the web, including the most popular platforms for video streaming
-and MP4 downloads.</center>
-      </p>
+        <h2 id="coverage">Why Business Insurance Matters</h2>
 
-      <p>
-        <center>Free video search and MP4 downloader. Baddiex is a video downloader that lets you search for videos, watch them within the app, and download them for free so you can watch offline. You can access millions of your favorite videos by searching for titles, artists, or albums.</center>
-      </p>
-    </main>
-  </div>
+        <p>
+            Business insurance can provide financial protection when unexpected
+            events affect your company. It can also help businesses satisfy
+            contractual or legal requirements.
+        </p>
 
-  <script>
-    function doSearch(event) {
-      event.preventDefault();
-      const value = document.getElementById("searchInput").value.trim();
+        <ul>
+            <li><strong>Financial protection:</strong> Helps manage certain
+                covered claims and legal expenses.</li>
 
-      if (!value) {
-        document.getElementById("searchInput").focus();
-        return false;
-      }
+            <li><strong>Compliance:</strong> Some businesses may need specific
+                coverage depending on local requirements.</li>
 
-      // Ganti bagian ini dengan URL/search endpoint milik Anda.
-      console.log("Search:", value);
-      alert("Pencarian: " + value);
-      return false;
-    }
-  </script>
+            <li><strong>Business continuity:</strong> Certain policies can help
+                reduce the financial impact of an interruption.</li>
+
+            <li><strong>Contract requirements:</strong> Some clients,
+                landlords or vendors may require proof of insurance.</li>
+
+            <li><strong>Peace of mind:</strong> Appropriate coverage can make
+                it easier to concentrate on running the business.</li>
+        </ul>
+
+
+        <h2 id="policies">Common Business Insurance Policies</h2>
+
+        <p>
+            There is no single insurance package that works for every company.
+            These are some of the common types of business coverage.
+        </p>
+
+
+        <div class="policy">
+
+            <div class="card">
+                <h3>General Liability</h3>
+
+                <p>
+                    Designed to help protect businesses from certain third-party
+                    injury, property damage and related claims.
+                </p>
+
+                <div class="price">
+                    Typical cost varies by business
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>Professional Liability</h3>
+
+                <p>
+                    Often relevant to consultants and service businesses.
+                    It can address certain claims involving professional errors
+                    or negligence.
+                </p>
+
+                <div class="price">
+                    Cost depends on risk
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>Workers' Compensation</h3>
+
+                <p>
+                    Coverage that may apply to workplace injuries and employee
+                    benefits, depending on applicable laws.
+                </p>
+
+                <div class="price">
+                    Depends on payroll and risk
+                </div>
+            </div>
+
+        </div>
+
+
+        <h2>Ways to Manage Insurance Costs</h2>
+
+        <ol>
+            <li>
+                <strong>Compare coverage:</strong>
+                Review quotes and policy terms from multiple insurers.
+            </li>
+
+            <li>
+                <strong>Match coverage to your risks:</strong>
+                Avoid paying for coverage that does not fit your actual
+                business activities.
+            </li>
+
+            <li>
+                <strong>Improve workplace safety:</strong>
+                Good safety practices may reduce business risk.
+            </li>
+
+            <li>
+                <strong>Review your policy regularly:</strong>
+                Business operations change, so insurance needs can change too.
+            </li>
+        </ol>
+
+
+        <h2 id="faq">Quick FAQ</h2>
+
+        <div class="faq">
+
+            <h3>How much coverage does a business need?</h3>
+
+            <p>
+                The appropriate amount depends on factors such as the industry,
+                revenue, employees, contracts and potential risks.
+            </p>
+
+
+            <h3>What is the difference between general and professional liability?</h3>
+
+            <p>
+                General liability generally focuses on certain third-party
+                bodily injury and property damage claims, while professional
+                liability relates to certain professional services and errors.
+            </p>
+
+
+            <h3>Can insurance premiums be tax deductible?</h3>
+
+            <p>
+                Business insurance expenses may be deductible in some
+                circumstances. Tax treatment depends on the business and
+                applicable tax rules.
+            </p>
+
+        </div>
+
+
+        <div class="cta">
+
+            <h2>Protect Your Business</h2>
+
+            <p>
+                Review your company's risks and choose coverage appropriate
+                for your situation.
+            </p>
+
+            <a href="#" class="button">
+                Get Started
+            </a>
+
+        </div>
+
+    </article>
+
+</main>
+
+
+<footer class="footer">
+    © 2026 Business Guide. All Rights Reserved.
+</footer>
+
 
 </body>
-  <!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4999790,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4999790&101" alt="counter create hit" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 </html>
